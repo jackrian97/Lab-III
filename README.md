@@ -76,7 +76,7 @@ DATABASES = {
 ```
 En este caso la base de datos esta en un servidor de fl0, si la base de datos esta en tu maquina local solo debes cambiar el host por localhost y el puerto por el que tengas configurado.
 
-Seguimos con la creacion del modelo en la app, para ello modificamos el fichero models.py que esta ubicado en `/arepas/arepas_proyecto/arepas_app/models.py`
+Seguimos con la creacion del modelo en la app, para ello modificamos el fichero `models.py` que esta ubicado en `/arepas/arepas_proyecto/arepas_app/models.py`
 ```python
 from django.db import models
 
@@ -92,7 +92,7 @@ class Arepa(models.Model):  #nombre de la tabla en la Base de Datos
     class Meta:
      db_table = 'arepas' #nombre de instancia con la que llamamos la tabla en la Base de Datos
 ```
-Seguimos con la migracion de los modelos a la base de datos con el comando, asegurate de estar en 'arepas_proyecto'
+Seguimos con la migracion de los modelos a la base de datos con el comando, asegurate de estar en `arepas_proyecto`
 ```bash
 python manage.py makemigrations arepas_app
 ```
