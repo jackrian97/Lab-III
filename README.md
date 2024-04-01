@@ -6,6 +6,7 @@ En este curso exploraremos la creacion de una plicacion web usando el framework 
 - [Proyecto ejemplo(arepas)](#arepas)
 - [Ambiente virtual](#instalar-el-ambiente-virtual)
 - [Django y app](#instalar-el-framework-django)
+- [Base de datos](#conectar-base-de-datos-con-django)
 
 
 # arepas
