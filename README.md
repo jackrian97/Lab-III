@@ -56,4 +56,21 @@ INSTALLED_APPS = [
 ]
 ```
 ## Conectar base de datos con Django
-
+Primero instalamos el paquete de psycopg2 con el comando
+```bash
+pip3 install psycopg2-binary==2.9.5
+```
+Seguimos con la configuracion de la base de datos en el fichero setting.py que esta ubicado en `/arepas/arepas_proyecto/arepas_proyecto/settings.py`
+```python
+DATABASES = {
+    'default': {
+        'ENGINE' : 'django.db.backends.postgresql_psycopg2', #motor de base de datos
+        'NAME' : 'lab1', #nombre de la base de datos
+        'USER' : 'fl0user', #usuario de la base de datos
+        'PASSWORD' : 'gEr0M9WAvKZF', #contraseña de la base de datos
+        'HOST' : 'ep-cool-band-a5o631yc.us-east-2.aws.neon.fl0.io', #host de la base de datos
+        'PORT' : '5432', #si lo dejas vacío tomara el puerto por default
+    }
+}
+```
+En este caso la base de datos esta en un servidor de fl0, si la base de datos esta en tu maquina local solo debes cambiar el host por localhost y el puerto por el que tengas configurado.
