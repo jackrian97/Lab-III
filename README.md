@@ -169,3 +169,24 @@ class ArepaEliminar(SuccessMessageMixin, DeleteView):
         messages.success (self.request, (success_message))       
         return reverse('leer') # Redireccionamos a la vista principal 'leer'
 ```
+Finalmente definimos las URLS para dirigir las solicitudes HTTP entrantes a las vistas correspondientes en el fichero `urls.py` que esta ubicado en `/arepas/arepas_proyecto/arepas_proyecto/urls.py`
+```python
+from django.contrib import admin
+from django.urls import path
+from  arepas_app.views import ArepaListado, ArepaDetalle, ArepaCrear, ArepaActualizar, ArepaEliminar
+
+urlpatterns = [
+    #Define la ruta para acceder a la interfaz de administración de Django.
+    path('admin/', admin.site.urls),
+    #Define la ruta para mostrar la lista de "arepas". Cuando se accede a arepas/, se llama a la vista ArepaListado y se renderiza el template index.html.
+    path('arepas/', ArepaListado.as_view(template_name = "arepas/index.html"), name='leer'),
+    #Define la ruta para mostrar los detalles de una "arepa". Cuando se accede a arepas/detalle/<int:pk>, se llama a la vista ArepaDetalle y se renderiza el template detalles.html.
+    path('arepas/detalle/<int:pk>', ArepaDetalle.as_view(template_name = "arepas/detalles.html"), name='detalles'),
+    #Define la ruta para crear una nueva "arepa". Cuando se accede a arepas/crear, se llama a la vista ArepaCrear y se renderiza el template crear.html.
+    path('arepas/crear', ArepaCrear.as_view(template_name = "arepas/crear.html"), name='crear'),
+    #Define la ruta para actualizar una "arepa". Cuando se accede a arepas/editar/<int:pk>, se llama a la vista ArepaActualizar y se renderiza el template actualizar.html.
+    path('arepas/editar/<int:pk>', ArepaActualizar.as_view(template_name = "arepas/actualizar.html"), name='actualizar'),
+    #Define la ruta para eliminar una "arepa". Cuando se accede a arepas/eliminar/<int:pk>, se llama a la vista ArepaEliminar.
+    path('arepas/eliminar/<int:pk>', ArepaEliminar.as_view(), name='eliminar'),
+]
+```
