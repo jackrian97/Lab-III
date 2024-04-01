@@ -57,7 +57,7 @@ INSTALLED_APPS = [
 ]
 ```
 ## Conectar base de datos con Django
-Primero instalamos el paquete de psycopg2 con el comando
+Primero instalamos el paquete de psycopg2 con el comando, este paquete se utiliza para conectar Django con la base de datos PostgreSQL.
 ```bash
 pip3 install psycopg2-binary==2.9.5
 ```
@@ -96,7 +96,10 @@ Seguimos con la migracion de los modelos a la base de datos con el comando, aseg
 ```bash
 python manage.py makemigrations arepas_app
 ```
+`makemigrations` Crea archivos de migración basados en los cambios en los modelos
+
 Y por ultimo creamos la tabla en la bese de datos ejecutando el comando
 ```bash
 python manage.py migrate
 ```
+`migrate`  Aplica esas migraciones para crear o actualizar la estructura de la base de datos.
