@@ -4,6 +4,8 @@ En este curso exploraremos la creacion de una plicacion web usando el framework 
 # Índice
 
 - [Proyecto ejemplo(arepas)](#arepas)
+- [Ambiente virtual](#instalar-el-ambiente-virtual)
+- [Django y app](#instalar-el-framework-django)
 
 
 # arepas
@@ -39,7 +41,7 @@ Continuamos con la creacion de una app en Django, para ello nos vamos a mover a 
 ```bash
 python manage.py startapp arepas_app
 ```
-Seguimos con el registro de la app modificando el fichero setting.py que esta ubicado en /arepas/arepas_proyecto/arepas_proyecto/settings.py
+Seguimos con el registro de la app modificando el fichero setting.py que esta ubicado en `/arepas/arepas_proyecto/arepas_proyecto/settings.py`
 ```python
 # Application definition
 
@@ -53,3 +55,5 @@ INSTALLED_APPS = [
     'arepas_app', #agrego la app
 ]
 ```
+## Conectar base de datos con Django
+
