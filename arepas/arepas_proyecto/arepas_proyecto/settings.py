@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'arepas_app', #agrego la app
+    'bootstrap4', #agrego bootstrap
+    'widget_tweaks', #agrego widget_tweaks
 ]
 
 MIDDLEWARE = [
@@ -120,7 +122,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+#La URL para los archivos Estáticos (CSS, JS, Imágenes, etc.)
 STATIC_URL = 'static/'
+
+#Las rutas para las imágenes de cada registro o arepas 
+MEDIA_URL = '/arepas/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'arepas/static/uploads')
+
+# Activamos 'CookieStorage' que nos permite enviar los mensajes de respuesta al Crear, Eliminar y Actualizar un registro
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

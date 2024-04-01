@@ -194,3 +194,40 @@ Primero crear la carpeta `templates` en `/arepas/arepas_proyecto/arepas_app/` y 
 - `detalles.html`
 - `crear.html`
 - `actualizar.html`
+
+Continuamos con la instalacion de Bootstrap 4 para Django, para ello vamos a instalar el paquete de django-bootstrap4 con el comando
+```bash
+pip install django-bootstrap4
+```
+El framework Bootstrap 4 se utiliza para diseñar y personalizar la interfaz de usuario de nuestra aplicación web.
+Ahora seguimos con Widget Tweaks para Django, para ello vamos a instalar el paquete de django-widget-tweaks con el comando
+```bash
+pip install django-widget-tweaks
+```
+Widget Tweaks es una biblioteca de Django que permite personalizar los widgets de formularios de Django en las plantillas HTML.
+Por ultimo modificamos el fichero `settings.py` que esta ubicado en `/arepas/arepas_proyecto/arepas_proyecto/settings.py` en la seccion de `INSTALLED_APPS` agregamos `'bootstrap4', 'widget_tweaks'`
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'arepas_app', #agrego la app
+    'bootstrap4', #agrego bootstrap
+    'widget_tweaks', #agrego widget_tweaks
+]
+```
+En este mismo fichero `settings.py` en la seccion de `STATIC_URL = 'static/'` agregamos justo debajo el siguiente codigo
+```python
+#La URL para los archivos Estáticos (CSS, JS, Imágenes, etc.)
+STATIC_URL = '/static/' 
+
+#Las rutas para las imágenes de cada registro o arepas 
+MEDIA_URL = '/arepas/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'arepas/static/uploads')
+
+# Activamos 'CookieStorage' que nos permite enviar los mensajes de respuesta al Crear, Eliminar y Actualizar un registro
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+```
