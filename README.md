@@ -1,14 +1,12 @@
 # Curso de laboratorio de softare III
 En este curso exploraremos la creacion de una plicacion web usando el framework Django, desde un sistema operativo linux intalado en una maquina virtual en google cloud, el motor de base de datos sera PostgresSQL para realizar el CRUD y por ultimo atulizaremos la plataforma de fl0 para desplegar esa base de datos.
-
 # Índice
-
 - [Proyecto ejemplo(arepas)](#arepas)
 - [Ambiente virtual](#instalar-el-ambiente-virtual)
 - [Django y app](#instalar-el-framework-django)
 - [Base de datos](#conectar-base-de-datos-con-django)
 - [Vistas genericas(CRUD)](#vistas-genericascrud)
-
+- [Vistas HTML con Bootstrap](#vistas-html-con-bootstrap)
 
 # arepas
 Vamos ha realizar la guia del profesor paso a paso https://github.com/cgiohidalgo/cruddjango20241 
@@ -190,3 +188,9 @@ urlpatterns = [
     path('arepas/eliminar/<int:pk>', ArepaEliminar.as_view(), name='eliminar'),
 ]
 ```
+## Vistas HTML con Bootstrap
+Primero crear la carpeta `templates` en `/arepas/arepas_proyecto/arepas_app/` y dentro de esta carpeta crear otra carpeta llamada `arepas` y dentro de esta carpeta crear los siguientes archivos:
+- `index.html`
+- `detalles.html`
+- `crear.html`
+- `actualizar.html`
