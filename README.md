@@ -7,6 +7,7 @@ En este curso exploraremos la creacion de una plicacion web usando el framework 
 - [Base de datos](#conectar-base-de-datos-con-django)
 - [Vistas genericas(CRUD)](#vistas-genericascrud)
 - [Vistas HTML con Bootstrap](#vistas-html-con-bootstrap)
+- [Templates HTML](#templates-html)
 
 # arepas
 Vamos ha realizar la guia del profesor paso a paso https://github.com/cgiohidalgo/cruddjango20241 
@@ -231,3 +232,87 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'arepas/static/uploads')
 # Activamos 'CookieStorage' que nos permite enviar los mensajes de respuesta al Crear, Eliminar y Actualizar un registro
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 ```
+## Templates HTML
+Para empezar todos los archivos HTML deben tener la siguiente estructura
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu título aquí</title>
+
+  <!-- Cargamos la librería Bootstrap 4 -->
+  {% load bootstrap4 %}
+
+  <!-- CSS Bootstrap -->
+  {% bootstrap_css %}
+
+  <!-- Widget Tweaks -->
+  {% load widget_tweaks %}
+
+  <!-- Archivos estáticos -->
+  {% load static %}
+
+</head>
+<body>
+
+  <!-- Contenido segun la página -->
+
+  <!-- Al final del body -->
+  <!-- JS y jQuery de Bootstrap -->
+  {% bootstrap_javascript jquery='full' %}
+
+</body>
+</html>
+```
+Empezamos con el archivo `index.html` el cual agragaremos en el body el siguiente codigo
+```html
+<body>
+    <div align="left" class="btn_crear mb-3">
+        <a href="crear" type="button" class="btn btn-primary">Crear</a> <!-- Boton crear -->
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th width="35%">Nombre</th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- Recorremos los objetos o registros que tenemos en nuestra tabla 'Arepas' y los listamos -->
+        {% for arepas in object_list %}
+        <tr>
+            <td>{{ arepas.nombre }}</td>
+            <td>{{ arepas.precio }}</td>
+            <td>{{ arepas.stock }}</td>
+            <td><img src="{% static 'uploads/'%}{{arepas.img}}" alt="{{arepas.nombre}}" class="img-fluid" width="7%"></td>
+            <td>
+                <!-- Usaremos un formulario que realizará la tarea de eliminar un registro o postre desde la misma tabla HTML -->
+                <form method="POST" action="eliminar/{{arepas.id}}">
+                    {% csrf_token %}
+                    <div class="btn-group">
+                        <!-- Creamos 3 botones que son ver, Editar y Eliminar, nos sirven para gestionar nuestros registros o postres -->
+                        <a href="detalle/{{arepas.id}}" title="Ver" type="button" class="btn btn-success">Ver </a>
+                        <a href="editar/{{arepas.id}}" title="Editar" type="button" class="btn btn-primary">Editar
+                        </a>
+                        <button class="btn btn-danger" onclick="return eliminar();" type="submit">Eliminar</button>
+                    </div>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- JS y jQuery de Bootstrap -->
+    {% bootstrap_javascript jquery='full' %}
+
+</body>
+```
+
+
