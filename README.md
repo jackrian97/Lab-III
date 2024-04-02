@@ -314,5 +314,7 @@ Empezamos con el archivo `index.html` el cual agragaremos en el body el siguient
 
 </body>
 ```
+Continuamos con el archivo `crear.html` el cual agragaremos en el body el siguiente codigo
+```html
 
 
