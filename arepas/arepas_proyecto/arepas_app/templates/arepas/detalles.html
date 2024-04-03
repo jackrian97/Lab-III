@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles</title>
+
+  <!-- Cargamos la librería Bootstrap 4 -->
+  {% load bootstrap4 %}
+
+  <!-- CSS Bootstrap -->
+  {% bootstrap_css %}
+
+  <!-- Widget Tweaks -->
+  {% load widget_tweaks %}
+
+  <!-- Archivos estáticos -->
+  {% load static %}
+
+</head>
+<body>
+    <h1>Detalles</h1>
+    <!-- Mostramos los detalles de una arepa en específico -->
+    <p><span class="txt_negrita">Nombre:</span> <br> {{object.nombre}}</p>
+    <p><span class="txt_negrita">Precio:</span> <br> {{object.precio}}</p>
+    <p><span class="txt_negrita">Stock:</span> <br> {{object.stock}}</p>
+    <p><span class="txt_negrita">Imagen:</span> <br> <img src="{% static 'uploads/'%}{{object.img}}" alt="{{object.nombre}}" class="img-fluid"> </p>
+    <p><span class="txt_negrita">Creado:</span> <br> {{object.created_at}}</p>
+    <p><span class="txt_negrita">Actualizado:</span> <br> {{object.updated_at}}</p>
+    <!--Botón para ir Home-->
+    <a href="../" type="submit" class="btn btn-primary">Volver</a> 
+  <!-- JS y jQuery de Bootstrap -->
+  {% bootstrap_javascript jquery='full' %}
+
+</body>
+</html>

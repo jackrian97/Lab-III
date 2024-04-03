@@ -350,7 +350,49 @@ Continuamos con el archivo `crear.html` el cual agragaremos en el body el siguie
 Continuamos con el archivo `detalles.html` el cual agragaremos en el body el siguiente codigo
 ```html
 <body>
-    <!--construyendo-->
+    <h1>Detalles</h1>
+    <!-- Mostramos los detalles de una arepa en específico -->
+    <p><span class="txt_negrita">Nombre:</span> <br> {{object.nombre}}</p>
+    <p><span class="txt_negrita">Precio:</span> <br> {{object.precio}}</p>
+    <p><span class="txt_negrita">Stock:</span> <br> {{object.stock}}</p>
+    <p><span class="txt_negrita">Imagen:</span> <br> <img src="{% static 'uploads/'%}{{object.img}}" alt="{{object.nombre}}" class="img-fluid"> </p>
+    <p><span class="txt_negrita">Creado:</span> <br> {{object.created_at}}</p>
+    <p><span class="txt_negrita">Actualizado:</span> <br> {{object.updated_at}}</p>
+    <!--Botón para ir Home-->
+    <a href="../" type="submit" class="btn btn-primary">Volver</a> 
+  <!-- JS y jQuery de Bootstrap -->
+  {% bootstrap_javascript jquery='full' %}
+
 </body>
 ```
+Por ultimo el archivo `actualizar.html` el cual agragaremos en el body el siguiente codigo
+```html
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}   
+        <div class="form-group">
+        <label for="nombre" class="txt_negrita">Nombre</label>
+        {{ form.nombre|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+        </div>
+        <div class="form-group">
+        <label for="precio" class="txt_negrita">Precio</label>
+        {{ form.precio|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+        <label for="stock" class="txt_negrita">Stock</label>
+        {{ form.stock|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+        <label for="img" class="txt_negrita">Imagen</label>
+        {{ form.img|add_class:"form-control mb-3" }}
+        <p class="txt_negrita">Imagen Actual:</p>
+        <img src="{% static 'uploads/'%}{{object.img}}" class="img-fluid" alt="{{object.nombre}}">
+        </div>
 
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        <a href="../" type="submit" class="btn btn-primary">Volver</a>
+    </form> 
+  <!-- JS y jQuery de Bootstrap -->
+  {% bootstrap_javascript jquery='full' %}
+</body>
+```
