@@ -316,5 +316,41 @@ Empezamos con el archivo `index.html` el cual agragaremos en el body el siguient
 ```
 Continuamos con el archivo `crear.html` el cual agragaremos en el body el siguiente codigo
 ```html
+<body>
+  <form method="post" enctype="multipart/form-data">
+    <!--Esta etiqueta asegura la protección contra CSRF (Cross-Site Request Forgery). Agrega un campo oculto con un token único que se utiliza para verificar que el formulario sea enviado desde tu sitio web y no desde un sitio malicioso.-->
+    {% csrf_token %}
+    <!--campo de la entrada de nombre de la 'arepa'-->
+    <div class="form-group">
+      <label for="nombre" class="txt_negrita">Nombre</label>
+      <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+      {{ form.nombre|add_class:"form-control" }}
+    </div>
+    <div class="form-group">
+      <label for="precio" class="txt_negrita">Precio</label>
+      {{ form.precio|add_class:"form-control" }}
+  </form>
+  <div class="form-group">
+    <label for="stock" class="txt_negrita">Stock</label>
+    {{ form.stock|add_class:"form-control" }}
+  </div>
+  <div class="form-group">
+    <label for="img" class="txt_negrita">Imagen</label>
+    {{ form.img|add_class:"form-control mb-3" }}
+  </div>
+  
+  <!--Estos son los botones de enviar y cancelar-->
+  <button type="submit" class="btn btn-primary">Aceptar</button>
+  <a href="./"  type="submit" class="btn btn-primary">Cancelar</a>
 
+  <!-- JS y jQuery de Bootstrap -->
+  {% bootstrap_javascript jquery='full' %}
+</body>
+```
+Continuamos con el archivo `detalles.html` el cual agragaremos en el body el siguiente codigo
+```html
+<body>
+    <!--construyendo-->
+</body>
+```
 
