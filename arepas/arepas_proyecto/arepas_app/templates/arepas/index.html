@@ -42,7 +42,7 @@
             <td>{{ arepas.nombre }}</td>
             <td>{{ arepas.precio }}</td>
             <td>{{ arepas.stock }}</td>
-            <td><img src="{{ arepas.img }}" alt="{{ arepas.nombre }}" class="img-fluid" width="7%"></td>
+            <td><img src="{{ arepas.img.url }}" alt="{{ arepas.nombre }}" class="img-fluid" width="7%"></td>
             <td>
                 <!-- Usaremos un formulario que realizará la tarea de eliminar un registro o postre desde la misma tabla HTML -->
                 <form method="POST" action="eliminar/{{arepas.id}}">
