@@ -37,7 +37,7 @@
         <label for="img" class="txt_negrita">Imagen</label>
         {{ form.img|add_class:"form-control mb-3" }}
         <p class="txt_negrita">Imagen Actual:</p>
-        <img src="{% static 'uploads/'%}{{object.img}}" class="img-fluid" alt="{{object.nombre}}">
+        <img src="{{ object.img.url }}" class="img-fluid" alt="{{object.nombre}}">
         </div>
 
         <button type="submit" class="btn btn-primary">Aceptar</button>
