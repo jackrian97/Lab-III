@@ -124,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 #La URL para los archivos Estáticos (CSS, JS, Imágenes, etc.)
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 #Las rutas para las imágenes de cada registro o arepas 
 MEDIA_URL = '/arepas/'

@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from  arepas_app.views import ArepaListado, ArepaDetalle, ArepaCrear, ArepaActualizar, ArepaEliminar
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     #Define la ruta para acceder a la interfaz de administración de Django.
@@ -32,3 +34,5 @@ urlpatterns = [
     #Define la ruta para eliminar una "arepa". Cuando se accede a arepas/eliminar/<int:pk>, se llama a la vista ArepaEliminar.
     path('arepas/eliminar/<int:pk>', ArepaEliminar.as_view(), name='eliminar'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
