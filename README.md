@@ -84,12 +84,16 @@ class Arepa(models.Model):  #nombre de la tabla en la Base de Datos
     nombre = models.CharField(max_length=100, default='DEFAULT VALUE')
     precio = models.CharField(max_length=20, default='DEFAULT VALUE')
     stock = models.CharField(max_length=100, default='DEFAULT VALUE')
-    img = models.FileField()
+    img = models.ImageField(upload_to='')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
      db_table = 'arepas' #nombre de instancia con la que llamamos la tabla en la Base de Datos
+```
+Para usar models.ImageField debes instalar Pillow con el comando
+```bash
+pip install Pillow
 ```
 Seguimos con la migracion de los modelos a la base de datos con el comando, asegurate de estar en `arepas_proyecto`
 ```bash
@@ -173,6 +177,8 @@ Finalmente definimos las URLS para dirigir las solicitudes HTTP entrantes a las 
 from django.contrib import admin
 from django.urls import path
 from  arepas_app.views import ArepaListado, ArepaDetalle, ArepaCrear, ArepaActualizar, ArepaEliminar
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     #Define la ruta para acceder a la interfaz de administración de Django.
@@ -188,6 +194,8 @@ urlpatterns = [
     #Define la ruta para eliminar una "arepa". Cuando se accede a arepas/eliminar/<int:pk>, se llama a la vista ArepaEliminar.
     path('arepas/eliminar/<int:pk>', ArepaEliminar.as_view(), name='eliminar'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
 ## Vistas HTML con Bootstrap
 Primero crear la carpeta `templates` en `/arepas/arepas_proyecto/arepas_app/` y dentro de esta carpeta crear otra carpeta llamada `arepas` y dentro de esta carpeta crear los siguientes archivos:
@@ -227,7 +235,7 @@ STATIC_URL = '/static/'
 
 #Las rutas para las imágenes de cada registro o arepas 
 MEDIA_URL = '/arepas/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'arepas/static/uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'arepas_proyecto/arepas/static/uploads')
 
 # Activamos 'CookieStorage' que nos permite enviar los mensajes de respuesta al Crear, Eliminar y Actualizar un registro
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
@@ -290,7 +298,7 @@ Empezamos con el archivo `index.html` el cual agragaremos en el body el siguient
             <td>{{ arepas.nombre }}</td>
             <td>{{ arepas.precio }}</td>
             <td>{{ arepas.stock }}</td>
-            <td><img src="{% static 'uploads/'%}{{arepas.img}}" alt="{{arepas.nombre}}" class="img-fluid" width="7%"></td>
+            <td><img src="{{ arepas.img.url }}" alt="{{arepas.nombre}}" class="img-fluid" width="7%"></td>
             <td>
                 <!-- Usaremos un formulario que realizará la tarea de eliminar un registro o postre desde la misma tabla HTML -->
                 <form method="POST" action="eliminar/{{arepas.id}}">
@@ -386,7 +394,7 @@ Por ultimo el archivo `actualizar.html` el cual agragaremos en el body el siguie
         <label for="img" class="txt_negrita">Imagen</label>
         {{ form.img|add_class:"form-control mb-3" }}
         <p class="txt_negrita">Imagen Actual:</p>
-        <img src="{% static 'uploads/'%}{{object.img}}" class="img-fluid" alt="{{object.nombre}}">
+        <img src="{{ object.img.url }}" class="img-fluid" alt="{{object.nombre}}">
         </div>
 
         <button type="submit" class="btn btn-primary">Aceptar</button>
