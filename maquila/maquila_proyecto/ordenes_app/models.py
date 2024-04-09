@@ -16,6 +16,10 @@ class ListaPares(models.Model):
     # Número de pares para la talla especificada
     pares = models.IntegerField(default=0)
 
+    class Meta:
+        db_table = 'lista_pares'  # Nombre de la tabla en la base de datos
+
+
 # Modelo para almacenar la información de una orden de pedido
 class OrdenPedido(models.Model):
     # Número único de la orden de pedido
@@ -46,5 +50,7 @@ class OrdenPedido(models.Model):
     def save(self, *args, **kwargs):
         self.total_pares = self.lista_pares.all().aggregate(models.Sum('pares'))['pares__sum'] or 0
         super().save(*args, **kwargs)
-
+    
+    class Meta:
+        db_table = 'orden_pedido'
     
