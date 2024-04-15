@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Orden de Pedido</title>
+</head>
+<body>
+    <h1>Crear Orden de Pedido</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Campos para la orden de pedido -->
+        <label for="orden_pedido">Orden de Pedido:</label>
+        <input type="text" id="orden_pedido" name="orden_pedido" required><br><br>
+        
+        <label for="bloque">Bloque:</label>
+        <input type="text" id="bloque" name="bloque" required><br><br>
+        
+        <label for="fecha_orden">Fecha de Orden:</label>
+        <input type="date" id="fecha_orden" name="fecha_orden" required><br><br>
+        
+        <label for="fecha_entrega">Fecha de Entrega:</label>
+        <input type="date" id="fecha_entrega" name="fecha_entrega"><br><br>
+        
+        <label for="cliente">Cliente:</label>
+        <input type="text" id="cliente" name="cliente" required><br><br>
+        
+        <label for="referencia">Referencia:</label>
+        <input type="text" id="referencia" name="referencia" required><br><br>
+        
+        <label for="foto_orden">Foto de la Orden:</label>
+        <input type="file" id="foto_orden" name="foto_orden"><br><br>
+
+        <!-- Campos para las tallas y pares -->
+        <label for="talla_34">Talla 34:</label>
+        <input type="number" id="talla_34" name="talla" min="0" value="0"><br><br>
+        
+        <label for="talla_35">Talla 35:</label>
+        <input type="number" id="talla_35" name="talla" min="0" value="0"><br><br>
+        
+        <!-- Repite los campos para las tallas hasta la talla 41 -->
+
+        <input type="submit" value="Crear Orden de Pedido">
+    </form>
+</body>
+</html>
