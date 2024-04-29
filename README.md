@@ -8,6 +8,7 @@ En este curso exploraremos la creacion de una plicacion web usando el framework 
 - [Vistas genericas(CRUD)](#vistas-genericascrud)
 - [Vistas HTML con Bootstrap](#vistas-html-con-bootstrap)
 - [Templates HTML](#templates-html)
+- [configuracion de templates](#configuracion-de-templates)
 
 # arepas
 Vamos ha realizar la guia del profesor paso a paso https://github.com/cgiohidalgo/cruddjango20241 
@@ -404,3 +405,6 @@ Por ultimo el archivo `actualizar.html` el cual agragaremos en el body el siguie
   {% bootstrap_javascript jquery='full' %}
 </body>
 ```
+
+## Configuracion de templates
+- agregue un template en la caprta clase_10 pero lo ignore en el gitignore
