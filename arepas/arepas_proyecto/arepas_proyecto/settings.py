@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'arepas_proyecto.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE' : 'django.db.backends.postgresql_psycopg2', #motor de base de datos
-        'NAME' : 'lab1', #nombre de la base de datos
-        'USER' : 'fl0user', #usuario de la base de datos
-        'PASSWORD' : 'gEr0M9WAvKZF', #contraseña de la base de datos
-        'HOST' : 'ep-cool-band-a5o631yc.us-east-2.aws.neon.fl0.io', #host de la base de datos
+        'ENGINE' : 'django.db.backends.postgresql', #motor de base de datos
+        'NAME' : 'Lab3', #nombre de la base de datos
+        'USER' : 'postgres', #usuario de la base de datos
+        'PASSWORD' : '1234', #contraseña de la base de datos
+        'HOST' : 'localhost', #host de la base de datos
         'PORT' : '5432', #si lo dejas vacío tomara el puerto por default
     }
 }
